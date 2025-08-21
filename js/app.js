@@ -38,6 +38,7 @@ function embaralha(lista) {
 }
 
 function reiniciar() {
+    nomesIncluidos = []; //Correção
     document.getElementById("nome-amigo").value = "";
     document.getElementById("lista-amigos").innerHTML = "";
     document.getElementById("lista-sorteio").innerHTML = "";
