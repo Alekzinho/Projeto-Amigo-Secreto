@@ -1,5 +1,4 @@
 let nomesIncluidos = [];
-let sorteados = [];
 
 function adicionar() {
     let inputNome = document.getElementById("nome-amigo").value.trim();
@@ -16,18 +15,25 @@ function adicionar() {
 }
 
 function sortear() {
+    embaralha(nomesIncluidos);
+    
     for (let i = 0; i < nomesIncluidos.length; i++) {
-        
-        let sortearNomes = nomesIncluidos[parseInt(Math.floor(Math.random() * nomesIncluidos.length))];
-        
-        while (sorteados.includes(sortearNomes) || nomesIncluidos[i] == sorteados[i]) {
-            sortearNomes = nomesIncluidos[parseInt(Math.floor(Math.random() * nomesIncluidos.length))];
+        if (i == nomesIncluidos.length - 1) {
+           document.getElementById("lista-sorteio").appendChild(document.createElement("p")).innerHTML = `${nomesIncluidos[i]} --> ${nomesIncluidos[0]}`;
+        } else {
+            document.getElementById("lista-sorteio").appendChild(document.createElement("p")).innerHTML = `${nomesIncluidos[i]} --> ${nomesIncluidos[i + 1]}`;
         }
-        
-        sorteados.push(sortearNomes);
+    }
+}
 
-        document.getElementById("lista-sorteio").appendChild(document.createElement("p")).innerHTML = `${nomesIncluidos[i]} -> ${sorteados[i]}`;
-        console.log(sorteados);
+function embaralha(lista) {
+    for (let indice = lista.length; indice; indice--) {
+
+        const indiceAleatorio = Math.floor(Math.random() * indice);
+
+        // atribuição via destructuring
+        [lista[indice - 1], lista[indiceAleatorio]] = 
+            [lista[indiceAleatorio], lista[indice - 1]];
     }
 }
 
@@ -38,4 +44,4 @@ function reiniciar() {
 
 }
 
-// Não consegui fazer com que a pessoa não sorteasse ela mesma!
+// Problema solucionado de acordo com o vídeo!
