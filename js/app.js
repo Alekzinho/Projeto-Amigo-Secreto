@@ -1,27 +1,69 @@
-let nomesIncluidos = [];
+let nomes = [];
 
 function adicionar() {
     let inputNome = document.getElementById("nome-amigo").value.trim();
     
     if (inputNome == "") {
+        alert("Insira um nome.");
         return;
     }
 
-    nomesIncluidos.push(inputNome);    
-    document.getElementById("lista-amigos").innerHTML = nomesIncluidos.join(", ");
+    if (nomes.includes(inputNome)) {
+        alert("Ops, este nome ja foi adicionado!");
+        return;
+    }
+
+    
+    nomes.push(inputNome);
+
+    listaAmigosIncluidos ();
         
     document.getElementById("nome-amigo").value = "";
     
+    if (document.getElementById("lista-sorteio").innerHTML !== "") {
+        document.getElementById("lista-sorteio").innerHTML = "";
+    }
+
+}
+// Desafio 1: Remover nome da lista
+   function listaAmigosIncluidos() {
+    lista = document.getElementById("lista-amigos");
+    lista.innerHTML = "";
+
+    for (let i = 0; i < nomes.length; i++) {
+        let nome = `<a onclick="remover(${i + 1})" id="nome-clicavel${i + 1}" class="nomes">${nomes[i]}</a>`;
+        
+        if (lista.innerHTML == "") {
+        lista.innerHTML = nome;
+        } else {
+            lista.innerHTML = lista.innerHTML + ", " + nome; 
+            }
+    }
+}
+
+function remover(indice) {
+    let nomeRemovido = document.getElementById(`nome-clicavel${indice}`);
+    let indexDaLista = nomes.indexOf(nomeRemovido.innerHTML);
+    nomes.splice(indexDaLista, 1);
+    nomeRemovido.remove();
+    
+    listaAmigosIncluidos();
+
+    if (document.getElementById("lista-sorteio").innerHTML = "") {
+        return;
+    } else {
+        document.getElementById("lista-sorteio").innerHTML = "";
+    }
 }
 
 function sortear() {
-    embaralha(nomesIncluidos);
+    embaralha(nomes);
     
-    for (let i = 0; i < nomesIncluidos.length; i++) {
-        if (i == nomesIncluidos.length - 1) {
-           document.getElementById("lista-sorteio").appendChild(document.createElement("p")).innerHTML = `${nomesIncluidos[i]} --> ${nomesIncluidos[0]}`;
+    for (let i = 0; i < nomes.length; i++) {
+        if (i == nomes.length - 1) {
+           document.getElementById("lista-sorteio").appendChild(document.createElement("p")).innerHTML = `${nomes[i]} --> ${nomes[0]}`;
         } else {
-            document.getElementById("lista-sorteio").appendChild(document.createElement("p")).innerHTML = `${nomesIncluidos[i]} --> ${nomesIncluidos[i + 1]}`;
+            document.getElementById("lista-sorteio").appendChild(document.createElement("p")).innerHTML = `${nomes[i]} --> ${nomes[i + 1]}`;
         }
     }
 }
@@ -38,11 +80,8 @@ function embaralha(lista) {
 }
 
 function reiniciar() {
-    nomesIncluidos = []; //Correção
+    nomes = [];
     document.getElementById("nome-amigo").value = "";
     document.getElementById("lista-amigos").innerHTML = "";
     document.getElementById("lista-sorteio").innerHTML = "";
-
 }
-
-// Problema solucionado de acordo com o vídeo!
