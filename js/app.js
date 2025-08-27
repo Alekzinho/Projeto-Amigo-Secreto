@@ -85,3 +85,12 @@ function reiniciar() {
     document.getElementById("lista-amigos").innerHTML = "";
     document.getElementById("lista-sorteio").innerHTML = "";
 }
+
+// Desafio 2: Manipulando arrays
+let minhaLista = [1,2,3];
+let nummero4 = [4];
+let nummero5 = [5];
+let nummero6 = [6];
+let novaLista = minhaLista.concat(nummero4, nummero5, nummero6);
+
+console.log(novaLista);
