@@ -3,14 +3,15 @@ let nomes = [];
 function adicionar() {
     let inputNome = document.getElementById("nome-amigo").value.trim();
     
-    // Desafios complemmentares: validando o nome
+    // Desafios complementares: validando o nome
     if (inputNome == "") {
         alert("Insira um nome.");
         return;
     }
 
+    // Desafios complementares: validando nome já adicionado
     if (nomes.includes(inputNome)) {
-        alert("Ops, este nome ja foi adicionado!");
+        alert("Ops, este nome já foi adicionado!");
         return;
     }
 
