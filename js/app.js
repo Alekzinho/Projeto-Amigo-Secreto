@@ -3,6 +3,7 @@ let nomes = [];
 function adicionar() {
     let inputNome = document.getElementById("nome-amigo").value.trim();
     
+    // Desafios complemmentares: validando o nome
     if (inputNome == "") {
         alert("Insira um nome.");
         return;
