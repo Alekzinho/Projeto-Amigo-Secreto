@@ -58,6 +58,12 @@ function remover(indice) {
 }
 
 function sortear() {
+    // Desafios complementares: Validando número de participantes    
+    if (nomes.length <= 2) {
+        alert("Insira no mínimo três nomes.");
+        return;
+    }
+    
     embaralha(nomes);
     
     for (let i = 0; i < nomes.length; i++) {
