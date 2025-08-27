@@ -10,7 +10,7 @@ function adicionar() {
     }
 
     // Desafios complementares: validando nome já adicionado
-    if (nomes.includes(inputNome)) {
+    if (nomes.join().toLowerCase().includes(inputNome.toLowerCase())) {
         alert("Ops, este nome já foi adicionado!");
         return;
     }
