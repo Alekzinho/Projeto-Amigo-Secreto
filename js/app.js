@@ -108,3 +108,11 @@ function algoritimoFisherYates(lista) {
 
 algoritimoFisherYates(novaLista);
 console.log(novaLista);
+
+// Desafio 5: Removendo duplicatas
+function removerDuplicatas(lista) {
+    let listaSemDuplicatas = new Set(lista);
+    console.log([...listaSemDuplicatas]);
+}
+
+removerDuplicatas(novaLista);
