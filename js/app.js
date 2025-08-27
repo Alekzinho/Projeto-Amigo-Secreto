@@ -97,3 +97,14 @@ let novaLista = minhaLista.concat(nummero4, nummero5, nummero6);
 novaLista.pop();
 
 console.log(novaLista);
+
+// Desafio 4: Algoritimo Fisher-Yates( ou Knuth Shuffle)
+function algoritimoFisherYates(lista) {
+  for (let i = lista.length -1; i > 0; i--) {
+    let j = Math.floor(Math.random() * (i+1));
+    lista[i] = lista[j];
+  }
+}
+
+algoritimoFisherYates(novaLista);
+console.log(novaLista);
